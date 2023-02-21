@@ -4,3 +4,15 @@ server:
 spring:
   application:
     name: audioManagement
+  datasource:
+    url: jdbc:postgresql://localhost:5432/audio
+    username: admin
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
