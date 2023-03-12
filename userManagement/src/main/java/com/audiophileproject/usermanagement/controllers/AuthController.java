@@ -4,7 +4,7 @@ package com.audiophileproject.usermanagement.controllers;
 import com.audiophileproject.usermanagement.models.AuthenticationResponse;
 import com.audiophileproject.usermanagement.models.AuthenticatoinRequest;
 import com.audiophileproject.usermanagement.models.RegisterRequest;
-import com.audiophileproject.usermanagement.repos.AuthenticationService;
+import com.audiophileproject.usermanagement.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
