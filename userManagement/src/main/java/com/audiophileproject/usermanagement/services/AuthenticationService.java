@@ -1,11 +1,10 @@
-package com.audiophileproject.usermanagement.repos;
+package com.audiophileproject.usermanagement.services;
 
-import com.audiophileproject.usermanagement.config.JwtService;
 import com.audiophileproject.usermanagement.models.*;
+import com.audiophileproject.usermanagement.repos.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +18,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
+    // TODO: validate the data before saving it
     public AuthenticationResponse register(RegisterRequest request){
         var user = User.builder()
                 .firstname(request.getFirstname())

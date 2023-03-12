@@ -1,4 +1,4 @@
-package com.audiophileproject.usermanagement.config;
+package com.audiophileproject.usermanagement.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
