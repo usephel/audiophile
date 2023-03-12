@@ -19,6 +19,7 @@ public class UserController {
              .email(currUser.getEmail())
              .firstname(currUser.getFirstname())
              .lastname(currUser.getLastname())
+             .lastname(currUser.getLastname())
              .build();
     }
 }
