@@ -1,10 +1,8 @@
 package com.audiophileproject.usermanagement.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +22,9 @@ public class User implements UserDetails {
     @GeneratedValue
     private Long id;
 
+    @NonNull
     private String firstname;
+    @NonNull
     private String lastname;
     @NonNull
     @Column(unique = true)
@@ -32,6 +32,7 @@ public class User implements UserDetails {
     @NonNull
     @Column(unique = true)
     private String email;
+    @NonNull
     private String password;
     @Enumerated(EnumType.STRING)
     private ERole role;
