@@ -1,5 +1,6 @@
 package com.audiophileproject.usermanagement.config;
 
+import com.audiophileproject.usermanagement.filters.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
