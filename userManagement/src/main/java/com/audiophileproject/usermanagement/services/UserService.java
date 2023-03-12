@@ -2,8 +2,10 @@ package com.audiophileproject.usermanagement.services;
 
 import com.audiophileproject.usermanagement.models.User;
 import com.audiophileproject.usermanagement.repos.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -31,8 +33,19 @@ public class UserService implements org.springframework.security.core.userdetail
      * @param user
      * @return
      */
-    public User updateUser(User user) {
-        return userRepository.save(user);
+    @Transactional
+    public Optional<User> updateUser(User user) {
+        User currUser = (User)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+            userRepository
+                    .findById(currUser.getId()) // returns Optional<User>
+                    .ifPresent(oldUser -> {
+                        oldUser.setFirstname(user.getFirstname());
+                        oldUser.setLastname(user.getLastname());
+                        oldUser.setEmail(user.getEmail());
+                        userRepository.save(oldUser);
+                    });
+
+        return  userRepository.findById(currUser.getId());
     }
 
     public void deleteUser(String username){
