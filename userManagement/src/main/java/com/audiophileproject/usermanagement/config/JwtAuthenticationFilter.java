@@ -1,5 +1,6 @@
 package com.audiophileproject.usermanagement.config;
 
+import com.audiophileproject.usermanagement.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
-    private final UserDetailsService userDetailsService;
+    private final UserService userDetailsService;
 
     @Override
     protected void doFilterInternal(
