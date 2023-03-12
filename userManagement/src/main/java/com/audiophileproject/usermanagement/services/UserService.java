@@ -8,7 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements org.springframework.security.core.userdetails.UserDetailsService {
@@ -22,6 +24,19 @@ public class UserService implements org.springframework.security.core.userdetail
 
     public List<User> getUsers(){
         return userRepository.findAll();
+    }
+
+    /**
+     * if user exist update it, else create it
+     * @param user
+     * @return
+     */
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(String username){
+        userRepository.deleteByEmail(username);
     }
 
     @Override
