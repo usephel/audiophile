@@ -4,7 +4,6 @@ import com.audiophileproject.usermanagement.models.User;
 import com.audiophileproject.usermanagement.repos.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,7 +28,7 @@ public class UserService implements org.springframework.security.core.userdetail
     }
 
     /**
-     * if user exist update it, else create it
+     * if user exist, update it. else, create it.
      * @param user
      * @return
      */
@@ -41,6 +40,7 @@ public class UserService implements org.springframework.security.core.userdetail
                     .ifPresent(oldUser -> {
                         oldUser.setFirstname(user.getFirstname());
                         oldUser.setLastname(user.getLastname());
+                        oldUser.setUsername(user.getUsername());
                         oldUser.setEmail(user.getEmail());
                         userRepository.save(oldUser);
                     });
@@ -49,12 +49,12 @@ public class UserService implements org.springframework.security.core.userdetail
     }
 
     public void deleteUser(String username){
-        userRepository.deleteByEmail(username);
+        userRepository.deleteByUsername(username);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return  userRepository.findByEmail(username)
+        return  userRepository.findByUsername(username)
                 .orElseThrow(()-> new UsernameNotFoundException("User Not Found !"));
     }
 }

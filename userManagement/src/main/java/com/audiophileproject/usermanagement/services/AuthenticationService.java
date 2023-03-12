@@ -23,6 +23,7 @@ public class AuthenticationService {
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
+                .username(request.getUsername())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(ERole.ROLE_USER)
@@ -34,6 +35,12 @@ public class AuthenticationService {
                 .build();
     }
 
+    /**
+     * authenticate the user by his email and password
+     * @param request
+     * @return
+     * @apiNote we authenticate by email and not username
+     */
     public AuthenticationResponse authenticate(AuthenticatoinRequest request){
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

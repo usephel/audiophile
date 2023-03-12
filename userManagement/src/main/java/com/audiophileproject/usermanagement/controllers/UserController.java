@@ -22,6 +22,7 @@ public class UserController {
 
      return UserResponse.builder()
              .email(currUser.getEmail())
+             .username(currUser.getUsername())
              .firstname(currUser.getFirstname())
              .lastname(currUser.getLastname())
              .lastname(currUser.getLastname())
@@ -34,6 +35,7 @@ public class UserController {
 
         return UserResponse.builder()
                 .email(newUser.getEmail())
+                .username(newUser.getUsername())
                 .firstname(newUser.getFirstname())
                 .lastname(newUser.getLastname())
                 .build();
