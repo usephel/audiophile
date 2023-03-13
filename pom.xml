@@ -21,8 +21,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
-    <spring.boot.dependecies.version>2.5.7</spring.boot.dependecies.version>
+    <spring.boot.maven.plugin.version>3.0.1</spring.boot.maven.plugin.version>
+    <spring.boot.dependecies.version>3.0.4</spring.boot.dependecies.version>
   </properties>
 
   <dependencyManagement>
