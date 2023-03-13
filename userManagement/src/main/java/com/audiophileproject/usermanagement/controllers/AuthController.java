@@ -5,6 +5,9 @@ import com.audiophileproject.usermanagement.models.AuthenticationResponse;
 import com.audiophileproject.usermanagement.models.AuthenticatoinRequest;
 import com.audiophileproject.usermanagement.models.RegisterRequest;
 import com.audiophileproject.usermanagement.services.AuthenticationService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,7 @@ public class AuthController {
 
     private final AuthenticationService authService;
 
+
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
@@ -31,5 +35,15 @@ public class AuthController {
             @RequestBody AuthenticatoinRequest request
     ){
         return ResponseEntity.ok(authService.authenticate(request));
+    }
+
+    // TODO complete this endpoint
+    @PostMapping("/refresh")
+    public ResponseEntity<AuthenticationResponse> authenticate(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response
+    ){
+
+        return ResponseEntity.ok(authService.refresh(request));
     }
 }
